@@ -36,6 +36,12 @@
             <version>8.4.0</version>
             <scope>runtime</scope>
         </dependency>
+        <!-- 内置数据库 H2（免费部署零外部依赖，MODE=MySQL 兼容现有 SQL） -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
         <!-- JWT -->
         <dependency>

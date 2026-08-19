@@ -1,0 +1,14 @@
+# Render Blueprint：一键部署后端（免费实例）
+# 用法：在 Render 网页选 "Blueprint" 导入本仓库即可
+services:
+  - type: web
+    name: anime-backend
+    runtime: java
+    rootDir: backend
+    buildCommand: mvn clean package -DskipTests
+    startCommand: java -jar target/auth-backend-1.0.0.jar
+    healthCheckPath: /api/anime/list
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+    plan: free

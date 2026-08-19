@@ -1,10 +1,10 @@
 -- 种子数据（启动时执行，INSERT IGNORE 幂等）
 
 -- 测试账号 admin / 123456
-INSERT IGNORE INTO t_user (id, username, password) VALUES (1, 'admin', '123456');
+INSERT INTO t_user (id, username, password) VALUES (1, 'admin', '123456') ON DUPLICATE KEY UPDATE id = id;
 
 -- 16 部番剧
-INSERT IGNORE INTO t_anime (id, title, author, category, tags, description, cover, rating, year, views, episodes, is_banner, bili_season, bvid, video_url) VALUES
+INSERT INTO t_anime (id, title, author, category, tags, description, cover, rating, `year`, views, episodes, is_banner, bili_season, bvid, video_url) VALUES
 (1, '刺客伍六七', '小疯映画', '国漫', '热血,搞笑,战斗',
  '小鸡岛最强发型师阿七，白天在理发店帮街坊剪头，晚上却是一位神秘杀手组织排名垫底的高级刺客。\n每次出任务总把场面搞得鸡飞狗跳，却在刀光剑影中一次次守护着这座小岛的平凡日常。\n一边吐槽一边接单，一边剪发一边暗杀，爆笑之下藏着温柔的人间烟火。',
  '/covers/lunbo1.jpg', 9.2, 2018, 360000000, 40, 1, 'ss6360', 'BV1SE411x7Z4',
@@ -68,24 +68,26 @@ INSERT IGNORE INTO t_anime (id, title, author, category, tags, description, cove
 (16, '天气之子', '新海诚', '电影', '爱情,奇幻,唯美',
  '离家出走的少年帆高来到东京，遇见能让天空放晴的"晴女"阳菜。\n两人靠"祈祷晴天"换取生活，却在一次次放晴中付出沉重代价。\n东京的大雨与阳光交织，少年少女为爱做出与世界为敌的选择。',
  '/covers/new4.avif', 9.1, 2019, 590000000, 1, 0, '', 'BV1SE411x7Z4',
- 'https://upload.wikimedia.org/wikipedia/commons/transcoded/c/c0/Big_Buck_Bunny_4K.webm/Big_Buck_Bunny_4K.webm.720p.vp9.webm');
+ 'https://upload.wikimedia.org/wikipedia/commons/transcoded/c/c0/Big_Buck_Bunny_4K.webm/Big_Buck_Bunny_4K.webm.720p.vp9.webm') ON DUPLICATE KEY UPDATE id = id;
 
 -- 演示弹幕（第1部番剧第1集）
-INSERT IGNORE INTO t_danmaku (id, anime_id, ep_no, time, text, color, username) VALUES
+INSERT INTO t_danmaku (id, anime_id, ep_no, time, text, color, username) VALUES
 (1, 1, 1, 1.5, '前排围观！', '#ffffff', 'admin'),
 (2, 1, 1, 3.2, '经典中的经典', '#ffd86b', 'admin'),
-(3, 1, 1, 5.0, '打卡留名', '#7ee8ff', 'admin');
+(3, 1, 1, 5.0, '打卡留名', '#7ee8ff', 'admin') ON DUPLICATE KEY UPDATE id = id;
 
 -- 演示评论（第1部番剧）
-INSERT IGNORE INTO t_comment (id, anime_id, user_id, username, content, likes) VALUES
+INSERT INTO t_comment (id, anime_id, user_id, username, content, likes) VALUES
 (1, 1, 1, 'admin', '阿七的理发店什么时候开分店？', 12),
-(2, 1, 1, 'admin', '每一刀都是人情世故，太好看了！', 5);
+(2, 1, 1, 'admin', '每一刀都是人情世故，太好看了！', 5) ON DUPLICATE KEY UPDATE id = id;
 
 -- 演示帖子
-INSERT IGNORE INTO t_post (id, user_id, username, title, content, likes) VALUES
+INSERT INTO t_post (id, user_id, username, title, content, likes) VALUES
 (1, 1, 'admin', '欢迎来到星空动漫留言板！', '在这里可以分享你正在追的番、安利冷门佳作，或者对网站提建议～', 3),
-(2, 1, 'admin', '大家最近在看什么？', '我先来：在补《罗小黑战记》，治愈系 yyds！', 1);
+(2, 1, 'admin', '大家最近在看什么？', '我先来：在补《罗小黑战记》，治愈系 yyds！', 1) ON DUPLICATE KEY UPDATE id = id;
 
 -- 演示帖子评论
-INSERT IGNORE INTO t_post_comment (id, post_id, user_id, username, content, likes) VALUES
-(1, 1, 1, 'admin', '支持！希望网站越做越好', 2);
+INSERT INTO t_post_comment (id, post_id, user_id, username, content, likes) VALUES
+(1, 1, 1, 'admin', '支持！希望网站越做越好', 2) ON DUPLICATE KEY UPDATE id = id;
+
+

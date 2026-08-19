@@ -61,7 +61,7 @@ public class HistoryController {
                 Integer.class, userId, animeId);
         if (exists != null && exists > 0) {
             jdbcTemplate.update(
-                    "UPDATE t_history SET ep_no = ?, progress = ? WHERE user_id = ? AND anime_id = ?",
+                    "UPDATE t_history SET ep_no = ?, progress = ?, updated_at = NOW() WHERE user_id = ? AND anime_id = ?",
                     ep, progress, userId, animeId);
         } else {
             jdbcTemplate.update(
