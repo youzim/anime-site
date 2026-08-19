@@ -4,8 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    # 部署时通过环境变量覆盖（Railway 等平台设置 DB_HOST/DB_PORT/DB_NAME/DB_USER/DB_PASSWORD）
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:exam_auth}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    # Railway MySQL 插件会提供 DATABASE_URL（完整 jdbc 连接串，含账号密码），直接读取；
+    # 本地开发不设置时回退到 localhost 默认值
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/exam_auth?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true}
     username: ${DB_USER:root}
     password: ${DB_PASSWORD:123456}
   # 启动时自动建表 + 灌种子数据（幂等，部署零人工初始化）
