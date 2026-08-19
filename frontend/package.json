@@ -1,0 +1,34 @@
+{
+  "name": "login-project",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@devui-design/icons": "^1.4.0",
+    "@element-plus/icons-vue": "^2.3.2",
+    "@wiidede/dan-player": "^0.5.3",
+    "axios": "^1.19.0",
+    "devui-theme": "^0.1.0",
+    "element-plus": "^2.14.4",
+    "pinia": "^4.0.2",
+    "vue": "^3.5.40",
+    "vue-devui": "^1.6.36",
+    "vue-router": "^5.2.0",
+    "vue3-touch-events": "^5.0.15",
+    "vue3-video-play": "^1.3.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "unplugin-vue-components": "^32.1.0",
+    "vite": "^8.1.5",
+    "vite-plugin-vue-devtools": "^8.1.5"
+  },
+  "engines": {
+    "node": "^22.18.0 || >=24.12.0"
+  }
+}
