@@ -8,6 +8,11 @@ spring:
     url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:exam_auth}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
     username: ${DB_USER:root}
     password: ${DB_PASSWORD:123456}
+  # 启动时自动建表 + 灌种子数据（幂等，部署零人工初始化）
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
 
 # JWT 配置
 jwt:
